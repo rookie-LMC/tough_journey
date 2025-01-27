@@ -17,7 +17,7 @@ debug_num = 200000000
 sleep_time_day_week_month_info = 0.4
 action_date = dt.date.today()
 start_date = '20230101'
-save_file = './stock_A/stock_A_2025_01_24'
+save_file = './stock_A/stock_A_2025_01_27'
 
 ## 过滤
 # 关键词黑名单
