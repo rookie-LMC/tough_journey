@@ -4,6 +4,15 @@ import time
 
 time_sleep = 0.2
 
+black_list = [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+]
+
 
 def get_stocks_code(df, code_col=2, name_col=3):
     stocks_code = []
@@ -13,7 +22,7 @@ def get_stocks_code(df, code_col=2, name_col=3):
     return stocks_code
 
 
-def get_industry_and_concept_of_stocks_v1(stocks_code, industry_stock,concept_stock,debug_num=20000):
+def get_industry_and_concept_of_stocks_v1(stocks_code, industry_stock, concept_stock, debug_num=20000):
     stocks_code_industry_concept, num_industry, num_concept = {}, {}, {}
     for i in range(min(len(stocks_code), debug_num)):
         st_code, st_name = stocks_code[i][0], stocks_code[i][1]
@@ -25,6 +34,10 @@ def get_industry_and_concept_of_stocks_v1(stocks_code, industry_stock,concept_st
         for i in range(min(len(stocks_code), debug_num)):
             st_code, st_name = stocks_code[i][0], stocks_code[i][1]
 
+    for name, df in concept_stock.items():
+        print(name)
+
+    return stocks_code_industry_concept, num_industry, num_concept
 
 
 def get_industry_and_concept_of_stocks(stocks_code, debug_num=20000):
@@ -128,3 +141,13 @@ def load_industry_or_concept_stock(save_file, trade_date, industry_or_concept, s
     df = pd.read_excel(file_path, sheet_name=sheet_name, dtype=str)
 
     return df
+
+
+def load_stocks(save_file, action_date, stock_code):
+    # file_path = './' + save_file + '/' + str(action_date) + '-' + str(stock_code) + '.xlsx'
+    file_path = save_file + '/' + str(action_date) + '-' + str(stock_code) + '.xlsx'
+    daily = pd.read_excel(file_path, sheet_name='daily')
+    weekly = pd.read_excel(file_path, sheet_name='weekly')
+    monthly = pd.read_excel(file_path, sheet_name='monthly')
+
+    return daily, weekly, monthly

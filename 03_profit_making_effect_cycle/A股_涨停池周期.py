@@ -19,7 +19,7 @@ import datetime as dt
 from utils_cycle import *
 
 save_zt_file = '../01_save_data/A_daily_limit_up_market'
-get_date = '20250117'
+get_date = '20250127'
 save_industry_file = '../01_save_data/industry_stock/' + get_date
 save_concept_file = '../01_save_data/concept_stock/' + get_date
 
