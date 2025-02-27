@@ -14,10 +14,10 @@ from utils_save import *
 
 ## 全局参数
 debug_num = 200000000
-sleep_time_day_week_month_info = 0.3
+sleep_time_day_week_month_info = 1
 action_date = dt.date.today()
-start_date = '20230101'
-save_file = './stock_HK/stock_HK_2025_01_27'
+start_date = '20240101'
+save_file = './stock_HK/stock_HK_2025_02_27'
 
 ## 港股通成份股
 stock_list = ak.stock_hk_ggt_components_em()

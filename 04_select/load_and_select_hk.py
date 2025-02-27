@@ -15,8 +15,8 @@ from utils_select import *
 ## 全局参数
 debug_num = 2000000000
 # action_date = dt.date.today()
-action_date = '2025-01-17'
-save_file = '../01_save_data/stock_HK/stock_HK_2025_01_17'
+action_date = '2025-01-20'
+save_file = '../01_save_data/stock_HK/stock_HK_2025_01_20'
 
 ## 港股通成份股
 stock_list = ak.stock_hk_ggt_components_em()
@@ -124,7 +124,7 @@ def in_up_critical(df_day, df_month, critical_thres_low, critical_thres_high, mo
 
 
 select_stocks_code_with_thres = []
-month_line_mode = 4
+month_line_mode = 3
 critical_thres_low, critical_thres_high = 0.90, 1.1
 for i in range(min(len(stocks_code), debug_num)):
     try:
@@ -133,7 +133,7 @@ for i in range(min(len(stocks_code), debug_num)):
         # judger_1 = True
         judger_1 = greater_than_n_days_mean_price(stock_daily[stocks_code[i][0]][['日期', '收盘']],
                                                   250)
-        # 股价在30元以下
+        # 股价在50000元以下
         judger_2 = less_than_target_price(stock_daily[stocks_code[i][0]][['日期', '收盘']],
                                           50000)
         # 65天内有过涨停

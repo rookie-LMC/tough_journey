@@ -5,10 +5,10 @@ import time
 from utils_cycle import *
 
 # 保存行业或者概念下股票
-trade_date = '20250127'
+trade_date = '20250227'
 save_industry_file = '../01_save_data/industry/' + trade_date
 save_concept_file = '../01_save_data/concept/' + trade_date
-time_sleep = 0.3
+time_sleep = 1
 start_date = '20201201'
 end_date = '20500101'
 

@@ -23,14 +23,14 @@ stocks_code = list(zip(stock_symbol, stock_name))
 print('**** 01 股票共计:', len(stocks_code))
 
 ## 参数
-start_date = '20250214'
+start_date = '20250210'
 debug_num = 4000000
-sleep_time = 0.15
+sleep_time = 0.1
 
 while True:
     # 用于存储每天涨跌股票数量的字典
     start_time = time.time()
-    print('*' * 10, start_time, '*' * 10)
+    # print('*' * 10, start_time, '*' * 10)
     daily_up_down_count, daily_up_down_detail_count, daily_up_down_detail_v1_count = {}, {}, {}
 
     for i in range(min(len(stocks_code), debug_num)):
@@ -46,21 +46,21 @@ while True:
                 if date not in daily_up_down_count:
                     daily_up_down_count[date] = {'up': 0, 'down': 0}
                     daily_up_down_detail_count[date] = {
-                        '涨幅10以上': 0,
-                        '涨幅10~5': 0,
-                        '涨幅5~2': 0,
-                        '涨幅2~0': 0,
-                        '涨幅0': 0,
-                        '涨幅0~负2': 0,
-                        '涨幅负2~负5': 0,
-                        '涨幅负5~负10': 0,
-                        '涨幅负10以下': 0
+                        '10以上': 0,
+                        '10~5': 0,
+                        '5~2': 0,
+                        '2~0': 0,
+                        '0': 0,
+                        '0~负2': 0,
+                        '负2~负5': 0,
+                        '负5~负10': 0,
+                        '负10以下': 0
                     }
                     daily_up_down_detail_v1_count[date] = {
-                        '涨幅10以上': 0,
-                        '涨幅10~5': 0,
-                        '涨幅负5~负10': 0,
-                        '涨幅负负10以下': 0
+                        '10以上': 0,
+                        '10~5': 0,
+                        '负5~负10': 0,
+                        '负10以下': 0
                     }
 
                 if change_pct > 0:
@@ -69,32 +69,32 @@ while True:
                     daily_up_down_count[date]['down'] += 1
 
                 if change_pct >= 10:
-                    daily_up_down_detail_count[date]['涨幅10以上'] += 1
+                    daily_up_down_detail_count[date]['10以上'] += 1
                 if change_pct < 10 and change_pct >= 5:
-                    daily_up_down_detail_count[date]['涨幅10~5'] += 1
+                    daily_up_down_detail_count[date]['10~5'] += 1
                 if change_pct < 5 and change_pct >= 2:
-                    daily_up_down_detail_count[date]['涨幅5~2'] += 1
+                    daily_up_down_detail_count[date]['5~2'] += 1
                 if change_pct < 2 and change_pct > 0:
-                    daily_up_down_detail_count[date]['涨幅2~0'] += 1
+                    daily_up_down_detail_count[date]['2~0'] += 1
                 if change_pct == 0:
-                    daily_up_down_detail_count[date]['涨幅0'] += 1
+                    daily_up_down_detail_count[date]['0'] += 1
                 if change_pct < 0 and change_pct >= -2:
-                    daily_up_down_detail_count[date]['涨幅0~负2'] += 1
+                    daily_up_down_detail_count[date]['0~负2'] += 1
                 if change_pct < -2 and change_pct >= -5:
-                    daily_up_down_detail_count[date]['涨幅负2~负5'] += 1
+                    daily_up_down_detail_count[date]['负2~负5'] += 1
                 if change_pct < -5 and change_pct >= -10:
-                    daily_up_down_detail_count[date]['涨幅负5~负10'] += 1
+                    daily_up_down_detail_count[date]['负5~负10'] += 1
                 if change_pct < -10:
-                    daily_up_down_detail_count[date]['涨幅负10以下'] += 1
+                    daily_up_down_detail_count[date]['负10以下'] += 1
 
                 if change_pct >= 10:
-                    daily_up_down_detail_v1_count[date]['涨幅10以上'] += 1
+                    daily_up_down_detail_v1_count[date]['10以上'] += 1
                 if change_pct < 10 and change_pct >= 5:
-                    daily_up_down_detail_v1_count[date]['涨幅10~5'] += 1
+                    daily_up_down_detail_v1_count[date]['10~5'] += 1
                 if change_pct < -5 and change_pct >= -10:
-                    daily_up_down_detail_v1_count[date]['涨幅负5~负10'] += 1
+                    daily_up_down_detail_v1_count[date]['负5~负10'] += 1
                 if change_pct < -10:
-                    daily_up_down_detail_v1_count[date]['涨幅负负10以下'] += 1
+                    daily_up_down_detail_v1_count[date]['负10以下'] += 1
 
             time.sleep(sleep_time)
         except Exception as e:
@@ -123,6 +123,7 @@ while True:
 
     end_time = time.time()
     print(f"代码执行时间为: {end_time - start_time} 秒")
+    print(dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))  # 获取当前日期和时间, 格式化输出时间，格式为年-月-日 时:分:秒
 
     # 可视化每天股票涨跌分布
     # plt.figure(figsize=(12, 6))
