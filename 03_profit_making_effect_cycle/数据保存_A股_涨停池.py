@@ -3,7 +3,7 @@ import datetime as dt
 from utils_cycle import *
 
 save_file = '../01_save_data/A_daily_limit_up_market'
-trade_date = '20250227'
+trade_date = '20250306'
 
 # 东方财富网-行情中心-涨停板行情-涨停股池
 df_zt = ak.stock_zt_pool_em(date=trade_date)

@@ -21,9 +21,9 @@ stocks_code = list(zip(stock_symbol, stock_name))
 print('**** 01 股票共计:', len(stocks_code))
 
 ## 参数
-start_date = '20240501'
+start_date = '20250210'
 debug_num = 4000000
-sleep_time = 1
+sleep_time = 0.1
 
 while True:
     start_time = time.time()
